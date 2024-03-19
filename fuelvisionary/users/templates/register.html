@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <script defer src="Registration"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="registrationForm">
+        <h2>Register New Account</h2>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text"  placeholder="Enter Username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" placeholder="Enter Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="Password must be at least 8 characters long, including at least one uppercase letter, one number, and one special character." required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

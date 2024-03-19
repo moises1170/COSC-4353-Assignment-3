@@ -68,6 +68,16 @@
 7. **Access the Login Page**
 
    To access the login page, navigate to http://127.0.0.1:8000/users/login/ in your browser.
+   
+## Handling Migration Prompts
+
+If the terminal prompts you to apply migrations, please stop the server by pressing `Ctrl + C` and then run the following command:
+
+```bash
+python manage.py migrate
+```
+
+This command applies all the database migrations required for your project to function correctly.
 
 ## Troubleshooting
 

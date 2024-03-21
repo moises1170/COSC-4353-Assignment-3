@@ -15,14 +15,23 @@
             <h1>Welcome</h2>
             <h3>SIGN IN</h3>
         </div>
+
+        {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
         <div class="userInputs">
-            <form action="/Login" id= formLogin method="post" >
+            <form id= formLogin method="post" >
+                {% csrf_token %}
                 <div >
-                    <input type="text" id="username" placeholder=" Username" class="input">
+                    <input type="text" id="username" placeholder=" Username" class="input" name="username">
                     <span id = errorMessage class="error"></span>
                 </div>
                 <div >
-                    <input type="password" id="password" placeholder=" Password"  class="input">
+                    <input type="password" id="password" placeholder=" Password"  class="input" name="password">
                     <span id = errorPassword class="error"></span>
                 </div>
                 <a href="{% url 'register' %}" class="registerLink">Register</a>
@@ -33,3 +42,5 @@
     </div>
 </body>
 </html>
+
+    

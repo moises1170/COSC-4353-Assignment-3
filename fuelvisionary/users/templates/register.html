@@ -13,7 +13,17 @@
 </head>
 
 <body>
-    <form id="registrationForm">
+
+
+    <form id="registrationForm" method="post" >
+        {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        {% csrf_token %}
         <h2>Register New Account</h2>
         <div>
             <label for="username">Username:</label>

@@ -1,0 +1,82 @@
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+} 
+
+body{
+  background-image: url(https://cdn1.epicgames.com/ue/item/MountainVistas_Screenshot_03-1920x1080-ac463a22a6db14dc5a5ea907eb38d7c8.png?resize=1&w=1920);
+  background-repeat: no-repeat;
+  background-position:top;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.base{
+  top: 50%; 
+  left: 50%; 
+  display:flex;
+  position: absolute;
+  flex-direction: column; 
+  transform: translate(-50%, -50%); 
+  border-radius: 25px;
+  background: rgba(250, 249, 246, 0.2); /* warm off white */
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  width: 500px;
+  height: 620px;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 20px; 
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+.profile-header h2 {
+  margin: 0;
+  color: #333; 
+  font-size: 30px; 
+  font-weight: 500;
+}
+
+input[type="text"], select {
+  width: 100%; 
+  padding: 10px; 
+  margin: 15px 0; 
+  display: inline;
+  background: rgba(255, 255, 255, 0.9); /* warm off white */ 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  box-sizing: border-box; 
+}
+
+input:hover {
+  transform: scale(1.01);
+  border-color: rgb(64, 64, 64);
+}
+
+button{ 
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px 20px; 
+  background-color:  rgba(0, 123, 255, .8);
+  backdrop-filter: blur(100px);
+  color: white; 
+  border: none;  
+  height: 60px; 
+  font-size: large;
+  position: relative;
+  display: block; 
+  margin-top: 30px;
+} 
+
+button:hover{
+  background-color:rgb(0, 123, 255);
+}
+
+button:active{
+  transform: scale(0.99);
+}

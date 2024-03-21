@@ -21,13 +21,19 @@
    ```bash
    pip3 install pipenv
    ```
-
+   
    Verify the installation with:
 
    ```bash
    pipenv --version
    ```
-
+   > **Note:** If the above step doesn't work, you may need to add the Python Scripts directory to your PATH environment variable.
+   >    ```
+   >    Your directory path might look similar to this:
+   >    C:\Users\(Your logged in User)\AppData\Local\Programs\Python\Python36\Scripts
+   >    ```
+   >  After adding Python Scripts to your PATH, try running ```pipenv --version```
+   
 3. **Clone the Repository**
 
    In Visual Studio Code (or your preferred IDE), clone the repository into your desired directory:
@@ -64,10 +70,6 @@
    ```
 
    You should see output indicating that the server is running. Now, you can visit http://127.0.0.1:8000/ in your web browser.
-
-7. **Access the Login Page**
-
-   To access the login page, navigate to http://127.0.0.1:8000/users/login/ in your browser.
    
 ## Handling Migration Prompts
 
@@ -83,3 +85,4 @@ This command applies all the database migrations required for your project to fu
 
 - If you encounter any issues, make sure you're in the correct directory (`fuelvisionary`) when running `pipenv` commands.
 - Ensure that your Python version matches the project's requirements. If necessary, use a tool like `pyenv` to manage multiple Python versions.
+- if you're missing any packages try running ```pip install -r requirements.txt```

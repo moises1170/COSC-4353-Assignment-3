@@ -11,15 +11,16 @@
 <body>
     <div class="base" style="font-family:verdana">
         <div class="bg.img"></div>
-        <form id="profile-form" action="/submit-profile" method="POST">
+        <form id="profile-form" method="POST">
+            {% csrf_token %}
             <div class="inputs">
                     <div class="profile-header">
                         <h2 >Complete Profile</h2>
                 </div>
-                <input type="text" id="full-name" class="input-box" placeholder="Full Name" required><br>
-                <input type="text" id="address1" class="input-box" placeholder="Primary Address 1 (Required)" required><br>
-                <input type="text" id="address2" class="input-box" placeholder="Secondary Address 2 (Optional)"><br>
-                <select class="input-box" required>
+                <input type="text" name ="fullname" id="full-name" class="input-box" placeholder="Full Name" required><br>
+                <input type="text" name ="address1" id="address1" class="input-box" placeholder="Primary Address 1 (Required)" required><br>
+                <input type="text" name ="address2" id="address2" class="input-box" placeholder="Secondary Address 2 (Optional)"><br>
+                <select class="input-box" name="state" required>
                     <option value="">Select your State </option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -73,8 +74,8 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select><br>
-                <input type="text" id="city" class="input-box" placeholder="City" required><br>
-                <input type="text" id="zip" class="input-box" placeholder="ZIP" required><br>
+                <input type="text" name ="city" id="city" class="input-box" placeholder="City" required><br>
+                <input type="text" name ="zipcode" id="zip" class="input-box" placeholder="ZIP" required><br>
                 <div class=button >
                     <button type="submit">Submit</button>
                 </div>

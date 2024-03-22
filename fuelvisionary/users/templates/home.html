@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <p>WELCOM TO FUEL VISIONARY</p>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    <p>WELCOME TO FUEL VISIONARY</p>
+    <p>{{client_instance.fullName}}!</p>
 </body>
 </html>

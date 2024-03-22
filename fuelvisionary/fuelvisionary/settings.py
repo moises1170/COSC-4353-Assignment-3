@@ -122,3 +122,14 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+
+LOGIN_URL = 'login'  # Specify your custom login URL here
+
+#code to make sure login session is terminated at close or timeout
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_NAME = 'my_session_cookie'
+SESSION_COOKIE_AGE = 3600
+SESSION_COOKIE_SECURE = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False 

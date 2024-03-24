@@ -25,11 +25,15 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("formLogin").addEventListener("submit", validationCheck)
     //clear error message if usesr tries again 
     document.getElementById("username").addEventListener("input", function() {
-        document.getElementById("errorMessage").textContent = "";
+        var errors = document.querySelectorAll(".error")
+        for(var error of errors){
+            error.textContent="";
+        }
+    
     });
-    document.getElementById("password").addEventListener("input", function() {
-        document.getElementById("errorPassword").textContent = "";
-    });
+   
+
+
 });
 
 

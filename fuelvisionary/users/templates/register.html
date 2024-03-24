@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <script defer src="Registration"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 
@@ -12,28 +12,37 @@
     <title>Document</title>
 </head>
 
-<body>
-
-
-    <form id="registrationForm" method="post" >
-        {% if messages %}
-        <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-        {% csrf_token %}
-        <h2>Register New Account</h2>
-        <div>
-            <label for="username">Username:</label>
-            <input type="text"  placeholder="Enter Username" name="username" required>
+<body class="">
+    <div class="container"> 
+        <div class="signInText">
+            <h1>Welcome</h2>
+            <h3>REGISTER</h3>
         </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" placeholder="Enter Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="Password must be at least 8 characters long, including at least one uppercase letter, one number, and one special character." required>
+
+     
+        <div class="userInputs">
+            <form id= formLogin method="post" >
+                {% csrf_token %}
+                <div >
+                    <input type="text" id="username" placeholder=" Username" class="input" name="username">
+                    <span id = errorMessage class="error"></span>
+                </div>
+                <div >
+                    <input type="password" id="password" placeholder=" Password"  class="input" name="password">
+                    <span id = errorPassword class="error"></span>
+                    {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li id="errorPassword" class="error">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <a href="{% url 'login' %}" class="registerLink">login</a>
+                <button type="submit" id="submitButton">Register</button>
+            </form >
         </div>
-        <button type="submit">Register</button>
-    </form>
+        
+    </div>
 </body>
 </html>

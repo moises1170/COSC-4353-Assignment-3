@@ -23,7 +23,7 @@ def loginPage(request):
             except:
                 return redirect('management')
         else:
-            messages.error(request, "Invalid username or password. Please try again.")
+            messages.error(request, "Invalid username or password")
 
     return render(request, 'login.html')
 
@@ -47,7 +47,7 @@ def registerPage(request):
         user = User.objects.create_user(username=username, password=password)
         user.save()
         
-        messages.success(request, "Account created successfully. You can now log in.")
+        messages.success(request, "Account created successfully!")
         return redirect('login')
 
     return render(request, 'register.html')

@@ -16,13 +16,7 @@
             <h3>SIGN IN</h3>
         </div>
 
-        {% if messages %}
-        <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
+     
         <div class="userInputs">
             <form id= formLogin method="post" >
                 {% csrf_token %}
@@ -33,6 +27,13 @@
                 <div >
                     <input type="password" id="password" placeholder=" Password"  class="input" name="password">
                     <span id = errorPassword class="error"></span>
+                    {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li id="errorPassword" class="error">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
                 <a href="{% url 'register' %}" class="registerLink">Register</a>
                 <button type="submit" id="submitButton">Sign In</button>

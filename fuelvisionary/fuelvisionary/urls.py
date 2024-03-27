@@ -24,6 +24,7 @@ urlpatterns = [
     path('', lambda request: redirect('users/login/', permanent=False)),
     path('profile/', include('profile.urls')),
     path('users/', include('users.urls')),
-    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout')
+    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
+    path('quotes/', include('quotes.urls'))
 ]
 

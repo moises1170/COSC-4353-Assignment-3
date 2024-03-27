@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', lambda request: redirect('users/login/', permanent=False)),
     path('profile/', include('profile.urls')),
-    path('users/', include('users.urls'))
+    path('users/', include('users.urls')),
+    path('quotes/', include('quotes.urls')),
 ]
 

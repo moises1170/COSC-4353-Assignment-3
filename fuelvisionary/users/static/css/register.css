@@ -6,7 +6,7 @@
 } 
 
 body{
-    background-image: url(https://static.vecteezy.com/system/resources/previews/031/425/592/non_2x/aerial-view-of-petrochemical-industry-refinery-in-the-morning-background-energy-industrial-plant-oil-station-manufacturing-for-fuel-and-energy-furnace-factory-line-free-photo.jpeg);
+  background-image: url(https://cdn1.epicgames.com/ue/item/MountainVistas_Screenshot_03-1920x1080-ac463a22a6db14dc5a5ea907eb38d7c8.png?resize=1&w=1920);
     background-repeat: no-repeat;
     background-position:top;
     background-size: cover;
@@ -14,49 +14,4 @@ body{
   
   }
 
-  form {
-    width: 320px; 
-    height: 480px; 
-    background: #fff; 
-    box-shadow: 0 10px 15px rgba(179, 179, 179, 0.7); 
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    border-radius: 10px; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-evenly; 
-    padding: 20px; 
-    border: 1px solid black;
-}
-
-
-button{ 
-    border-radius: 4px;
-    width: 100%;
-    padding: 10px 20px; 
-    background-color:  #318CE7; 
-    color: white; 
-    border: none;  
-    height: 60px; /* adjust the height */ 
-    font-size: large;
-    position: relative;
-     /* Adjust this value to your preference */
-    display: block; 
-  } 
-
-  button:hover{
-    background-color: #2977c4;
-  }
-
-  input{
-    width: 100%;
-    height: 60px;
-    padding: 10px 20 px;
-    border: 1px solid black;
-    border-radius: 4px;
-    margin-bottom: 25px;
-    font-size: large;
-    padding-left: 10px;
-}
+  

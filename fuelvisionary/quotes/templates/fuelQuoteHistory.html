@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuel Quote History</title>
+    <link rel="stylesheet" href="{% static 'css/styleFuelQuoteHistory.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text">FUEL QUOTE HISTORY</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Quote #</th>
+                    <th>Gallons Requested</th>
+                    <th>Delivery Address</th>
+                    <th>Delivery Date</th>
+                    <th>Suggested Price</th>
+                    <th>Total Amount Due</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for quote in fuel_quotes %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ quote.gallonsRequested }}</td>
+                    <td>{{ quote.deliveryAddress }}</td>
+                    <td>{{ quote.deliveryDate }}</td>
+                    <td>{{ quote.priceQuote }}</td>
+                    <td>{{ quote.amountDue }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No quotes found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

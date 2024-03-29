@@ -1,20 +1,49 @@
-from django.shortcuts import render
-from profile.models import client
-from .models import fuel_quote
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
+from .models import FuelQuote
+from .forms import FuelQuoteForm
+from profile.models import client  
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-def fuelQuote(request):
+@login_required
+def quote(request):
+    
+    current_client = client.objects.get(client=request.user)
+
+   
+    quote_count = FuelQuote.objects.filter(client=current_client).count()
+
     if request.method == 'POST':
-        gallonsRequested = request.POST.get("gallonsRequested")
-        deliveryDate = request.POST.get("deliveryDate")
-        priceQuote = 10
-        totalDue = request.POST.get("totalDue")
-        user_profile = client.objects.get(client=request.user)
-        deliveryAddress = f"{user_profile.address1}, {user_profile.address2}, {user_profile.city}, {user_profile.state}, {user_profile.zipcode}"
-        new_quote = fuel_quote.objects.create(gallonsRequested=gallonsRequested, deliveryAddress=deliveryAddress, deliveryDate=deliveryDate, priceQuote=priceQuote, totalDue=totalDue)
-        
-    return render(request, 'fuel_quote.html')
-  
-def quoteHistory(request):
-    fuel_quotes = fuel_quote.objects.filter(client=request.user)
-    return render(request, 'fuelQuoteHistory.html', {'fuel_quotes': fuel_quotes})
+        form = FuelQuoteForm(request.POST)
+        if form.is_valid():
+            FuelQuote.objects.create(
+                gallons=form.cleaned_data['gallons'],
+                address=current_client.address1,  
+                date=form.cleaned_data['date'],
+                price=form.cleaned_data['price'],
+                total_price=form.cleaned_data['total_price'],
+                client=current_client
+            )
+            return redirect('history/')
+    else:
+        form = FuelQuoteForm()
+
+    return render(request, 'fuel_quote.html', {
+        'form': form, 
+        'current_client': current_client, 
+        'quote_count': quote_count
+    })
+
+
+
+@login_required
+def history(request):
+    
+    current_client = client.objects.get(client=request.user)
+    
+    
+    fuel_quotes = FuelQuote.objects.filter(client=current_client).order_by('-id')
+    
+    return render(request, 'fuelQuoteHistory.html', {
+        'fuel_quotes': fuel_quotes
+    })

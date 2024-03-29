@@ -1,40 +1,65 @@
-<html>
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fuel Quote Form</title>
-    <link rel="stylesheet" href="fuel_quote.css">
+    <link rel="stylesheet" href="{% static 'css/fuel_quote.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 </head>
-<body>
-   
-    <form onsubmit="calculateTotal(); return false;">
-        <fieldset>
-	    <legend style="font-size: 25px;">Fuel Request Quote Form</legend><br>
-            <label for="gallonsRequested">Gallons Requested (Required)</label><br>
-            <input type="number" id="gallonsRequested" min="1" required><br><br>
-            <label for="deliveryAddress">Delivery Address</label><br>
-            <input type="text" id="deliveryAddress" name="deliveryAddress" value="(Address from client profile)" disabled /><br><br>
-            <label for="deliveryDate">Delivery Date</label><br>
-            <input type="date" id="deliveryDate"><br><br>
-            <input type="submit" value="Submit">
-        </fieldset>
-        <br><br>
-        <label for="priceQuote">Price per gallon:</label><br>
-        <input type="text" id="priceQuote" name="priceQuote" value="10" disabled /><br><br>
-        <label for="amountDue">Amount due:</label><br>
-        <output for="amountDue" id="amountDue"></output>
 
-        <script>
-            function calculateTotal() {
-                var field1 = document.getElementById("gallonsRequested").value;
-                var field2 = document.getElementById("priceQuote").value;
+{% block content %}
 
-                var totalDue = parseFloat(field1) * parseFloat(field2);
+    <div class="container py-3 text-center">
+        <form action="{% url 'fuelquote' %}" id="quote-form" method="POST" class="needs-validation" novalidate>
+            <h1 class="mb-3">New Fuel Quote</h1>
+            {% csrf_token %}
+            <div class="form-group py-2">
+                {{ form.gallons.label_tag }}
+                {{ form.gallons }}
+                <script>
+                    document.getElementById('{{ form.gallons.id_for_label }}').onchange = calculatePrice;
+                </script>
+            </div>
+            <div class="form-group py-2">
+                {{ form.date.label_tag }}
+                {{ form.date }}
+            </div>
 
-                if (!isNaN(totalDue)) {
-                    document.getElementById("amountDue").innerHTML ="$"+totalDue;
-                }
-            }
-        </script>
-    </form>
-</body>
-</html>
+            <div class="form-group py-2">
+                <label for="deliveryAddress">Delivery Address:</label>
+                <input type="text" id="deliveryAddress" name="deliveryAddress" value="{{ current_client.address1 }}" class="form-control col-3 mx-auto" disabled />
+            </div>
+        
+            <div class="form-group py-2">
+                <label for="pricePerGallon">Price / Gallon:</label>
+                <input type="text" id="pricePerGallon" name="price" value="10" class="form-control col-2 mx-auto" readonly />
+            </div>
+            
+            <div class="form-group py-2">
+                <label for="totalAmountDue">Total Amount Due:</label>
+                <input type="text" id="totalAmountDue" name="total_price" class="form-control col-2 mx-auto" readonly />
+            </div>
+            <button type="button" id="get-quote" class="btn btn-dark" onclick="calculatePrice()">Get Quote</button>
+            <button type="submit" id="submit-quote" onclick="calculatePrice()">Submit Quote</button>
+            <button type="reset" id="cancel" class="btn btn-outline-secondary">Cancel</button>
+            {{ form.errors }}
+        </form>
+    </div>
+    
+    <script>
+       
+        function calculatePrice() {
+            let gallons = document.getElementById('{{ form.gallons.id_for_label }}').value;
+            // For now, price per gallon is hardcoded to 10
+            let pricePerGallon = document.getElementById('pricePerGallon').value; 
+            let totalAmountDue = gallons * pricePerGallon;
+            
+            document.getElementById('totalAmountDue').value = totalAmountDue.toFixed(2);
+        }
+
+    </script>
+{% endblock %}

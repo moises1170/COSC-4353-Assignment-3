@@ -14,7 +14,11 @@
 
     <div class="text-center">  
         <p>WELCOME TO FUEL VISIONARY</p>
-        <p>{{client_instance.fullName}}!</p>
+        {% if client_instance %}
+          <p>{{client_instance.fullName}}!</p>
+        {% else %}
+          <p>Guest!</p>
+        {% endif %}
     </div>
     
     

@@ -4,6 +4,7 @@ from .models import client
 from django.contrib.auth.decorators import login_required
 
 
+
 @login_required
 def userPage(request):
     if request.method == 'POST':

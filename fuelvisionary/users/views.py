@@ -1,12 +1,26 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.views.generic import ListView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from profile.models import client
 from django.contrib.auth import authenticate, login, logout
+import re
+
+def is_valid_email(email):
+    # Regular expression pattern for matching email addresses
+    email_pattern = r'^[\w\.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.-]+$'
+    
+    # Compile the pattern
+    pattern = re.compile(email_pattern)
+    
+    # Use the compiled pattern to match the email address
+    if pattern.match(email):
+        return True
+    else:
+        return False
+
+    
 
 
 def loginPage(request):
@@ -33,7 +47,11 @@ def registerPage(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        # Validate form data
+        #Validate form data
+        if not is_valid_email(username):
+           messages.error(request, "Invalid email address.")
+           return redirect('register')
+
         if not username or not password:
             messages.error(request, "Username and password are required.")
             return redirect('register')
@@ -57,7 +75,10 @@ def registerPage(request):
 def homePage(request):
     user = request.user
     if user.is_authenticated:
-        client_instance = client.objects.get(client=user)
+        try:
+            client_instance = client.objects.get(client=user)
+        except client.DoesNotExist:
+            return render(request, 'home.html')
     else:
         # Handle the case where the user is not authenticated
         return HttpResponse('User is not authenticated', status=401)

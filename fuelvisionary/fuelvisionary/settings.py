@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'profile',
     'quotes',
     'users',
+    'pricing'
 ]
 
 MIDDLEWARE = [

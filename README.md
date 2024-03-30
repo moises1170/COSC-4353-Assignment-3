@@ -4,7 +4,7 @@
 
 - Ensure you have Python installed. If not, download and install it from [Python's official website](https://www.python.org/downloads/)
 
-## Installation Steps
+## Installation Steps For Windows
 
 1. **Check Python Installation**
 
@@ -27,10 +27,11 @@
    ```bash
    pipenv --version
    ```
-   > **Note:** If the above step doesn't work, you may need to add the Python Scripts directory to your PATH environment variable.
+   > **Note:** If the above step doesn't work, you may need to add Python and Python Scripts directory to your PATH environment variable.
    >    ```
    >    Your directory path might look similar to this:
-   >    C:\Users\(Your logged in User)\AppData\Local\Programs\Python\Python36\Scripts
+   >    C:\Users\(Your logged in User)\AppData\Local\Programs\Python\Python312\
+   >    C:\Users\(Your logged in User)\AppData\Local\Programs\Python\Python312\Scripts\
    >    ```
    >  After adding Python Scripts to your PATH, try running ```pipenv --version```
    
@@ -39,7 +40,7 @@
    In Visual Studio Code (or your preferred IDE), clone the repository into your desired directory:
 
    ```bash
-   git clone https://github.com/moises1170/assignment-3.git
+   git clone https://github.com/moisespal/assignment-3.git
    cd assignment-3/fuelvisionary
    ```
    
@@ -60,8 +61,14 @@
    ```bash
    pipenv shell
    ```
+6. **Create a `.env` file in the `fuelVisionary` directory**
 
-6. **Run the Development Server**
+   For testing purposes:
+      - Add the following line to the `.env` file, replacing `number` with any integer, then save the file:
+
+        SECRET_KEY='number'
+   
+7. **Run the Development Server**
 
    Start the Django development server with:
 

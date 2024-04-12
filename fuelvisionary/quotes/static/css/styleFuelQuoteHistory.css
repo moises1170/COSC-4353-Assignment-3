@@ -9,6 +9,28 @@ body, html {
     background-attachment: fixed;
 }
 
+.navbar ul{
+    list-style-type: none;
+    background-color: hsl(182, 25%, 40%);
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.navbar a{
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+.navbar a:hover{
+    background-color: hsl(182, 25%, 30%);
+    color: white;
+}
+.navbar li{
+    float: left;
+}
+
 .container {
     width: 80%;
     margin: 50px auto;
@@ -41,7 +63,7 @@ th, td {
 }
 
 th {
-    background-color: #00dc07;
+    background-color: hsl(182, 25%, 40%);
     color: white;
 }
 

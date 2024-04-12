@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 </head>
 
+<nav class="navbar">
+    <ul>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'fuelquote' %}">Request A Quote</a></li>
+      <li><a href="{% url 'quotehistory' %}">Quote History</a></li>
+      <li><a href="">Profile</a></li>
+      <li><a href="">Logout</a></li>
+    </ul>
+</nav>
+
 <div class="container">
     <table border="1">
         <thead>

@@ -1,35 +1,61 @@
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-    font-family: Roboto;
+.navbar{
+  position: relative;
+  z-index: 1;
+}
+.navbar ul{
+  list-style-type: none;
+  background-color: hsl(182, 25%, 40%);
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+.navbar a{
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+  text-align: center;
+}
+.navbar a:hover{
+  background-color: hsl(182, 25%, 30%);
+  color: white;
+}
+.navbar li{
+  float: left;
+}
+
+*{ 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+  font-family: Roboto;
 } 
 
 body{
-    background-image: url(https://static.vecteezy.com/system/resources/previews/031/425/592/non_2x/aerial-view-of-petrochemical-industry-refinery-in-the-morning-background-energy-industrial-plant-oil-station-manufacturing-for-fuel-and-energy-furnace-factory-line-free-photo.jpeg);
-    background-repeat: no-repeat;
-    background-position:top;
-    background-size: cover;
-    background-attachment: fixed;
+  background-image: url(https://static.vecteezy.com/system/resources/previews/031/425/592/non_2x/aerial-view-of-petrochemical-industry-refinery-in-the-morning-background-energy-industrial-plant-oil-station-manufacturing-for-fuel-and-energy-furnace-factory-line-free-photo.jpeg);
+  background-repeat: no-repeat;
+  background-position:top;
+  background-size: cover;
+  background-attachment: fixed;
   
-  }
+}
 
-  form {
-    width: 30%; 
-    height: 480px; 
-    background: #ffffff; 
-    box-shadow: 0 10px 15px rgba(179, 179, 179, 0.7); 
-    position: absolute; 
-    top: 40%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    border-radius: 10px; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-evenly; 
-    padding: 20px; 
-    border: 1px solid black;
-    backdrop-filter: blur(50px)
+form {
+  width: 30%; 
+  height: 480px; 
+  background: #ffffff; 
+  box-shadow: 0 10px 15px rgba(179, 179, 179, 0.7); 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  border-radius: 10px; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-evenly; 
+  padding: 20px; 
+  border: 1px solid black;
+  backdrop-filter: blur(50px)
 }
 
 

@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def userPage(request):
+    
+    
     if request.method == 'POST':
         fullname = request.POST.get('fullname')
         address1 = request.POST.get("address1")

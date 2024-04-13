@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from profile.models import client
 from django.contrib.auth import authenticate, login, logout
-import re
+import re, hashlib
 
 def is_valid_email(email):
     # Regular expression pattern for matching email addresses
@@ -20,13 +20,17 @@ def is_valid_email(email):
     else:
         return False
 
+# Hash the password using the SHA-256 algorithm
+def hash_password(password):
+    # Hash the password using the SHA-256 algorithm
+    return hashlib.sha256(password.encode()).hexdigest()    
     
 
 
 def loginPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        password = request.POST.get('password')
+        password = hash_password(request.POST.get('password'))
 
         user = authenticate(username=username, password=password)
         if user is not None:
@@ -45,7 +49,7 @@ def loginPage(request):
 def registerPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        password = request.POST.get('password')
+        password = hash_password(request.POST.get('password'))
 
         #Validate form data
         if not is_valid_email(username):
@@ -62,6 +66,7 @@ def registerPage(request):
             return redirect('register')
 
         # Create the user
+
         user = User.objects.create_user(username=username, password=password)
         user.save()
         

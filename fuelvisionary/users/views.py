@@ -4,8 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from profile.models import client
+from quotes.models import FuelQuote
 from django.contrib.auth import authenticate, login, logout
 import re, hashlib
+import datetime
 
 def is_valid_email(email):
     # Regular expression pattern for matching email addresses
@@ -24,7 +26,7 @@ def is_valid_email(email):
 def hash_password(password):
     # Hash the password using the SHA-256 algorithm
     return hashlib.sha256(password.encode()).hexdigest()    
-    
+
 
 
 def loginPage(request):
@@ -82,14 +84,18 @@ def homePage(request):
     if user.is_authenticated:
         try:
             client_instance = client.objects.get(client=user)
-        except client.DoesNotExist:
+            quote_instance = FuelQuote.objects.filter(client=client_instance)
+            two_weeks = datetime.timedelta(weeks=2)
+            quote_instance = quote_instance.filter(date__range=(datetime.date.today(), datetime.date.today()+two_weeks))
+        except client.DoesNotExist or FuelQuote.DoesNotExist:
             return render(request, 'home.html')
     else:
         # Handle the case where the user is not authenticated
         return HttpResponse('User is not authenticated', status=401)
 
     context = {
-        'client_instance': client_instance
+        'client_instance': client_instance,
+        'quote_instance': quote_instance
     }
     return render(request, 'home.html',context)
 

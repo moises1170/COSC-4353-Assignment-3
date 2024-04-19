@@ -13,6 +13,15 @@
 
 {% block content %}
 
+    <nav class="navbar">
+        <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'fuelquote' %}">Request A Quote</a></li>
+        <li><a href="{% url 'quotehistory' %}">Quote History</a></li>
+        <li><a href="{% url 'login' %}">Logout</a></li>
+        </ul>
+    </nav>
+
     <div class="container py-3 text-center">
         <form action="{% url 'fuelquote' %}" id="quote-form" method="POST" class="needs-validation" novalidate>
             <h1 class="mb-3">New Fuel Quote</h1>

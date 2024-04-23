@@ -44,16 +44,17 @@
             </div>
         
             <div class="form-group py-2">
-                <label for="pricePerGallon">Price / Gallon:</label>
-                <input type="text" id="pricePerGallon" name="price" value="10" class="form-control col-2 mx-auto" readonly />
+                <label for="pricePerGallon">Suggested Price / Gallon:</label>
+                <input type="text" id="pricePerGallon" name="price" 
+    value="{{ suggested_price|default:'0.00' }}" class="form-control col-2 mx-auto" readonly />
             </div>
-            
             <div class="form-group py-2">
                 <label for="totalAmountDue">Total Amount Due:</label>
-                <input type="text" id="totalAmountDue" name="total_price" class="form-control col-2 mx-auto" readonly />
+                <input type="text" id="totalAmountDue" name="total_price" 
+    value="{{ total_amount_due|default:'0.00' }}" class="form-control col-2 mx-auto" readonly />
             </div>
-            <button type="button" id="get-quote" class="btn btn-dark" onclick="calculatePrice()">Get Quote</button>
-            <button type="submit" id="submit-quote" onclick="calculatePrice()">Submit Quote</button>
+            <button type="submit" name="get_quote" id="get-quote" class="btn btn-dark">Get Quote</button>
+            <button type="submit" id="submit-quote">Submit Quote</button>
             <button type="reset" id="cancel" class="btn btn-outline-secondary">Cancel</button>
             {{ form.errors }}
         </form>
@@ -61,14 +62,7 @@
     
     <script>
        
-        function calculatePrice() {
-            let gallons = document.getElementById('{{ form.gallons.id_for_label }}').value;
-            // For now, price per gallon is hardcoded to 10
-            let pricePerGallon = document.getElementById('pricePerGallon').value; 
-            let totalAmountDue = gallons * pricePerGallon;
-            
-            document.getElementById('totalAmountDue').value = totalAmountDue.toFixed(2);
-        }
+
 
     </script>
 {% endblock %}

@@ -8,7 +8,7 @@ class FuelQuoteForm(forms.Form):
     date = forms.DateField(label='Delivery Date', required=True, 
         widget=forms.DateInput(attrs={'class': 'form-control col-2 mx-auto', 'type': 'date'}), 
         error_messages={'required': "Please select a date."})
-    price = forms.IntegerField(label='Suggested Price / Gallons',
-        widget=forms.NumberInput(attrs={'class': 'form-control col-2 mx-auto', 'default': '10'}))
+    price = forms.DecimalField(label='Suggested Price / Gallons',
+        widget=forms.NumberInput(attrs={'class': 'form-control col-2 mx-auto', 'readonly': 'readonly'}))
     total_price = forms.FloatField(label='Total Amount',
         widget=forms.NumberInput(attrs={'class': 'form-control col-2 mx-auto', 'readonly': 'readonly'}))

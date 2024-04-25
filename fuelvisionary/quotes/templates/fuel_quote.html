@@ -67,6 +67,17 @@
     </div>
     
     <script>
+        function validationCheck(event){
+            var input1 = document.getElementById("pricePerGallon").value;
+            var input2 = document.getElementById("totalAmountDue").value;
+
+            if(input1 == "0.00" || input2 == "0.00"){
+                document.querySelector(".errors").textContent = "Please get a quote first!";
+                event.preventDefault();
+            }
+        }
+        document.getElementById("submit-quote").addEventListener("click", validationCheck);
+
       document.querySelectorAll("input").forEach(function(input) {
         input.addEventListener("input", function() {
         document.querySelector(".errors").textContent = "";

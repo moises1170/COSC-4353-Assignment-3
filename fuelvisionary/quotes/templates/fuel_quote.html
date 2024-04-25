@@ -55,7 +55,7 @@
             <div class="form-group py-2">
                 <label for="totalAmountDue">Total Amount Due:</label>
                 <input type="text" id="totalAmountDue" name="total_price" 
-    value="{{ total_amount_due|default:'0.00' }}" class="form-control col-2 mx-auto" readonly />
+    value="{{ total_amount_due|default:'0.00'| floatformat:2 }}" class="form-control col-2 mx-auto" readonly />
             </div>
             <button type="submit" name="get_quote" id="get-quote" class="btn btn-dark">Get Quote</button>
             <button type="submit" id="submit-quote">Submit Quote</button>

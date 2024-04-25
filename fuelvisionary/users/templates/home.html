@@ -17,7 +17,7 @@
     
     <div class="section_1_item">
         <div class="text-center" >  
-          <p class="welcome-text">WELCOME TO FUEL VISIONARY</p>
+          <p class="welcome-text">Welcome to FuelVisionary</p>
           {% if client_instance %}
             <p class="welcome-text">{{client_instance.fullName}}!</p>
           {% else %}
@@ -28,15 +28,15 @@
   </div>
     <div class="container" id="container">
       <div class="container-item">
-          <a role="button" class="btn btn-outline-primary btn-lg btn-custom " href="{% url 'fuelquote' %}">FUEL QUOTE</a>
+          <a role="button" class="btn btn-outline-primary btn-lg btn-custom fuel-history-btn" href="{% url 'fuelquote' %}">Fuel Quote</a>
       </div>
       <div class="container-item">
-          <a role="button" class="btn btn-outline-primary btn-lg btn-custom" href="{% url 'quotehistory' %}">HISTORY</a>
+          <a role="button" class="btn btn-outline-primary btn-lg btn-custom fuel-history-btn" href="{% url 'quotehistory' %}">History</a>
       </div>
       <div class="container-item">
           <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-outline-danger btn-lg btn-custom">Logout</button>
+            <button type="submit" class="btn btn-outline-danger btn-lg btn-custom logout-btn">Logout</button>
           </form>
       </div>  
     </div>
@@ -75,7 +75,7 @@
         box-sizing: border-box; 
         margin: 0; 
         padding: 0; 
-        font-family: poppins;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       } 
    
       #container {
@@ -153,13 +153,36 @@
         }
 
         .btn-custom {
+            font-weight: 490;
             max-width: 100%;
             width: 200px;
             height: 50px;
-            text-shadow: 2px 2px 4px
+            background: rgba(250, 249, 246, 0.3); /* warm off white */
+            backdrop-filter: blur(10px);
+            border-color: rgba(250, 249, 246, 0.3);
+            transition: background .6s ease;
+            transition: color .25s ease;
+        }
+        
+        .btn-custom:hover {
+          background: rgba(250, 249, 246, 0.5); /* warm off white */
+          border-color: #e0e0e0;
+          color: rgba(37,37,37, 0.9); 
+        }
+
+        .fuel-history-btn {
+          color: rgba(114,114,114, 0.9);
+
+        }
+
+        .logout-btn {
+          color: rgba(201, 76, 76, 0.8);
+        }
+
+        .logout-btn:hover {
+          color: rgba(178,0,0, 0.8)
         }
        
-
         .flex-row-container {
           display: flex;
           align-items: center;
@@ -171,8 +194,8 @@
         }
 
         .logo-cst {
-          height: 150px;
-          width: 150px;
+          height: 180px;
+          width: 270px;
           
         }
         .quote_container {
@@ -189,11 +212,9 @@
           position: relative;
         }
      
-        
         .welcome-text {
           font-size: 30px;
-          text-shadow: 2px 2px 4px black;
-          /* Text color */
+          text-shadow: 1px 1px 2px gray;
         }
 
         body{

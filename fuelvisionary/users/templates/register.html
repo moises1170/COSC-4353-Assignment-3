@@ -13,6 +13,24 @@
 </head>
 
 <body class="">
+    <div class="section_1">
+        <img class="section_1_item logo-cst" src="{% static 'images/Subject.png' %}" alt="logo" class="logo-cst">
+        <div class="section_1_item">
+            <div class="text-center" >  
+            <p class="welcome-text">Welcome to FuelVisionary</p>
+            {% if client_instance %}
+                <p class="welcome-text">{{client_instance.fullName}}!</p>
+            {% else %}
+                <p class="welcome-text">Guest!</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
     <div class=" signup-cnt"> 
         <div class="signInText">
             <h1>Welcome</h2>

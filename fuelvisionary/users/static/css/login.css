@@ -20,7 +20,9 @@
     flex-direction: column; 
     justify-content: space-evenly; 
     padding: 20px; 
-    border: 1px solid black;
+    background: rgba(250, 249, 246, 0.2); /* warm off white */
+    backdrop-filter: blur(10px);
+    
 }
 
 
@@ -66,12 +68,11 @@ button{
   }
 
   body{
-    background-image: url(https://static.vecteezy.com/system/resources/previews/031/425/592/non_2x/aerial-view-of-petrochemical-industry-refinery-in-the-morning-background-energy-industrial-plant-oil-station-manufacturing-for-fuel-and-energy-furnace-factory-line-free-photo.jpeg);
+    background-image: url(https://cdn1.epicgames.com/ue/item/MountainVistas_Screenshot_03-1920x1080-ac463a22a6db14dc5a5ea907eb38d7c8.png?resize=1&w=1920);
     background-repeat: no-repeat;
     background-position:top;
     background-size: cover;
     background-attachment: fixed;
-  
   }
 
   #errorMessage,  #errorPassword{
@@ -101,9 +102,10 @@ button{
     flex-direction: column; 
     justify-content: space-evenly; 
     padding: 20px; 
-    border: 1px solid black;
     animation: increaseWidth .4s ease-in;
     animation-fill-mode: forwards;
+    background: rgba(250, 249, 246, 0.2); 
+    backdrop-filter: blur(10px);
     }
     @keyframes increaseWidth {
             0% {
@@ -120,3 +122,33 @@ button{
         text-decoration: none;
         font-size: 14px;
     }
+
+    .section_1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      transform: translate(-50%, -50%); 
+      top: 20%; 
+      left: 48%; 
+      padding: 20px;
+      width: 75%;
+   
+    }
+    .section_1_item {
+      align-items: center;
+      position: relative;
+      text-align: center;
+    }
+    .logo-cst {
+      height: 180px;
+      width: 270px;
+      
+    }
+
+    .welcome-text {
+      font-size: 30px;
+      text-shadow: 1px 1px 2px gray;
+    }
+
+  

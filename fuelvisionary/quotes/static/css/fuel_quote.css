@@ -17,7 +17,7 @@ body{
 .form-cnt{
   display: flex;
   width: 600px; 
-  height: 520px; 
+  height: 550px; 
   background: #ffffff; 
   box-shadow: 0 10px 15px rgba(179, 179, 179, 0.7); 
   position: absolute; 
@@ -61,7 +61,8 @@ input{
   position: relative;
   justify-content: space-between; 
   align-items: center; 
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
+  
 }
 
 @media (max-width: 768px) {
@@ -86,7 +87,7 @@ button:active{
 
 .errors{
   color: red;
-  font-size: 14px;
-  margin-top: 5px;
+  font-size: 13px;
   padding-left: 20px;
+  justify-content: center;
 }

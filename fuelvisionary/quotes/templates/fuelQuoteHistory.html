@@ -1,22 +1,14 @@
+{% extends 'base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% block content %}
     <title>FUEL QUOTE HISTORY</title>
     <link rel="stylesheet" href="{% static 'css/styleFuelQuoteHistory.css'%}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-</head>
 
-<nav class="navbar">
-    <ul>
-      <li><a href="{% url 'home' %}">Home</a></li>
-      <li><a href="{% url 'fuelquote' %}">Request A Quote</a></li>
-      <li><a href="{% url 'quotehistory' %}">Quote History</a></li>
-      <li><a href="{% url 'login' %}">Logout</a></li>
-    </ul>
-</nav>
+
+
 
 <div class="container">
     <table border="1">
@@ -33,7 +25,7 @@
         <tbody>
             {% for quote in fuel_quotes %}  
             <tr>
-                <td>{{ quote.id }}</td>  
+                <td>{{ forloop.counter }}</td>  
                 <td>{{ quote.gallons }}</td> 
                 <td>{{ quote.address }}</td>  
                 <td>{{ quote.date }}</td>  
@@ -45,3 +37,4 @@
     </table>
     <a href="{% url 'fuelquote' %}" class="btn btn-primary">Back to Quote Form</a>
 </div>
+{% endblock %}

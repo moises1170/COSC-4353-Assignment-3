@@ -10,9 +10,9 @@
     <title>Document</title>
 </head>
 <body>
-  <form action="{% url 'logout' %}" method="post">
+  <form action="{% url 'logout' %}" method="post" >
     {% csrf_token %}
-    <nav class="navbar navbar-inverse ">
+    <nav class="navbar navbar-inverse nav-csm">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -37,8 +37,10 @@
           </div>
         </div>
       </nav>
-      </form>
+    </form>
+     <style>
       
+     </style>
       {% block content %}
       {% endblock %}
 

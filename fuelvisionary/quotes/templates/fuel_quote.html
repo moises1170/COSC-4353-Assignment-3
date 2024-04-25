@@ -19,8 +19,6 @@
 
 
 
-
-
     <div class="container py-3 text-center">
         <form class="form-cnt" action="{% url 'fuelquote' %}" id="quote-form" method="POST" class="needs-validation" novalidate>
             <h1 class="mb-3 item">New Fuel Quote</h1>
@@ -62,14 +60,16 @@
             <div class="form-group py-2 item">
                 <button type="submit" id="submit-quote" class="btn">Submit Quote</button>
             </div>
-            <div class="errors item"> {{ form.errors }} </div>
+            <div class="errors item"> 
+                {{ form.errors }} 
+            </div>
         </form>
     </div>
     
     <script>
       document.querySelectorAll("input").forEach(function(input) {
         input.addEventListener("input", function() {
-        document.querySelector(".errors").style.display = "none";
+        document.querySelector(".errors").textContent = "";
     });
     });
 

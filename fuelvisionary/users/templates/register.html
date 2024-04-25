@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <script defer src="Registration"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-
+    <script src="{% static 'js/login.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 
 <body class="">
-    <div class="container"> 
+    <div class=" signup-cnt"> 
         <div class="signInText">
             <h1>Welcome</h2>
             <h3>REGISTER</h3>
@@ -25,7 +25,7 @@
                 {% csrf_token %}
                 <div >
                     <input type="text" id="username" placeholder=" Username" class="input" name="username">
-                    <span id = errorMessage class="error"></span>
+                    <span id = errorMessage class="error email-err"></span>
                 </div>
                 <div >
                     <input type="password" id="password" placeholder=" Password"  class="input" name="password">
@@ -38,11 +38,47 @@
                     </ul>
                     {% endif %}
                 </div>
-                <a href="{% url 'login' %}" class="registerLink">login</a>
+                <a href="{% url 'login' %}" class="registerLink login-btn">Login</a>
                 <button type="submit" id="submitButton">Register</button>
             </form >
         </div>
         
     </div>
+    <style>
+        .signup-cnt {
+        width: 320px; 
+        height: 480px; 
+        background: #fff; 
+        box-shadow: 0 10px 15px rgba(179, 179, 179, 0.7); 
+        position: absolute; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        border-radius: 10px; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: space-evenly; 
+        padding: 20px; 
+        border: 1px solid black;
+        animation: increaseWidth .4s ease-in;
+        animation-fill-mode: forwards;
+        }
+        @keyframes increaseWidth {
+                0% {
+                    width: 320px;
+                }
+                100% {
+                    width: 420px;
+                }
+                
+            }
+        .login-btn {
+            margin-top: 5px;
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+    </style>
 </body>
 </html>

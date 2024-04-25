@@ -1,28 +1,3 @@
-.navbar{
-  position: relative;
-  z-index: 1;
-}
-.navbar ul{
-  list-style-type: none;
-  background-color: hsl(182, 25%, 40%);
-  padding: 0px;
-  margin: 0px;
-  overflow: hidden;
-}
-.navbar a{
-  color: white;
-  text-decoration: none;
-  padding: 15px;
-  display: block;
-  text-align: center;
-}
-.navbar a:hover{
-  background-color: hsl(182, 25%, 30%);
-  color: white;
-}
-.navbar li{
-  float: left;
-}
 
 *{ 
   box-sizing: border-box; 
@@ -32,17 +7,17 @@
 } 
 
 body{
-  background-image: url(https://static.vecteezy.com/system/resources/previews/031/425/592/non_2x/aerial-view-of-petrochemical-industry-refinery-in-the-morning-background-energy-industrial-plant-oil-station-manufacturing-for-fuel-and-energy-furnace-factory-line-free-photo.jpeg);
+  background-image: url(https://cdn1.epicgames.com/ue/item/MountainVistas_Screenshot_03-1920x1080-ac463a22a6db14dc5a5ea907eb38d7c8.png?resize=1&w=1920);
   background-repeat: no-repeat;
   background-position:top;
   background-size: cover;
   background-attachment: fixed;
-  
 }
 
-form {
-  width: 30%; 
-  height: 480px; 
+.form-cnt{
+  display: flex;
+  width: 600px; 
+  height: 520px; 
   background: #ffffff; 
   box-shadow: 0 10px 15px rgba(179, 179, 179, 0.7); 
   position: absolute; 
@@ -54,8 +29,64 @@ form {
   flex-direction: column; 
   justify-content: space-evenly; 
   padding: 20px; 
-  border: 1px solid black;
-  backdrop-filter: blur(50px)
+  background: rgba(250, 249, 246, 0.2); /* warm off white */
+  backdrop-filter: blur(10px);
 }
 
+input{
+  width: 100%; 
+  height: 40px; 
+  border: 1px solid #000000; 
+  border-radius: 5px; 
+  padding: 5px; 
+  font-size: 16px; 
+  outline: none;
+  padding-left: 10px;
+}
+.btn{
+  width:100%; 
+  height: 40px; 
+  border: none; 
+  border-radius: 5px; 
+  background: #318CE7; 
+  color: #ffffff; 
+  font-size: 16px; 
+  cursor: pointer; 
+  outline: none; 
+  
+}
 
+.item{
+  display: flex; 
+  position: relative;
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 10px; 
+}
+
+@media (max-width: 768px) {
+  .form-cnt {
+    width: 80%;
+  }
+  
+}
+
+input:hover {
+  transform: scale(1.01);
+  border-color: rgb(64, 64, 64);
+}
+
+button:hover{
+  background-color:rgb(0, 123, 255);
+}
+
+button:active{
+  transform: scale(0.99);
+}
+
+.errors{
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  padding-left: 20px;
+}

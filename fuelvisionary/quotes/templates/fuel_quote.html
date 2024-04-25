@@ -1,39 +1,38 @@
+    
+{% extends 'base.html' %}
 {% load static %}
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% block content %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fuel Quote Form</title>
     <link rel="stylesheet" href="{% static 'css/fuel_quote.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-</head>
+    <link rel="stylesheet2" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-{% block content %}
 
-    <nav class="navbar">
-        <ul>
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'fuelquote' %}">Request A Quote</a></li>
-        <li><a href="{% url 'quotehistory' %}">Quote History</a></li>
-        <li><a href="{% url 'login' %}">Logout</a></li>
-        </ul>
-    </nav>
+
+
+
+
+
 
     <div class="container py-3 text-center">
-        <form action="{% url 'fuelquote' %}" id="quote-form" method="POST" class="needs-validation" novalidate>
-            <h1 class="mb-3">New Fuel Quote</h1>
+        <form class="form-cnt" action="{% url 'fuelquote' %}" id="quote-form" method="POST" class="needs-validation" novalidate>
+            <h1 class="mb-3 item">New Fuel Quote</h1>
             {% csrf_token %}
-            <div class="form-group py-2">
+            <div class="form-group py-2 item">
                 {{ form.gallons.label_tag }}
                 {{ form.gallons }}
                 <script>
                     document.getElementById('{{ form.gallons.id_for_label }}').onchange = calculatePrice;
                 </script>
             </div>
-            <div class="form-group py-2">
+            <div class="form-group py-2 item">
                 {{ form.date.label_tag }}
                 {{ form.date }}
                 <script>
@@ -42,29 +41,37 @@
                 </script>
             </div>
 
-            <div class="form-group py-2">
+            <div class="form-group py-2 item">
                 <label for="deliveryAddress">Delivery Address:</label>
                 <input type="text" id="deliveryAddress" name="deliveryAddress" value="{{ current_client.address1 }}" class="form-control col-3 mx-auto" disabled />
             </div>
         
-            <div class="form-group py-2">
+            <div class="form-group py-2 item">
                 <label for="pricePerGallon">Suggested Price / Gallon:</label>
                 <input type="text" id="pricePerGallon" name="price" 
     value="{{ suggested_price|default:'0.00' }}" class="form-control col-2 mx-auto" readonly />
             </div>
-            <div class="form-group py-2">
+            <div class="form-group py-2 item">
                 <label for="totalAmountDue">Total Amount Due:</label>
                 <input type="text" id="totalAmountDue" name="total_price" 
-    value="{{ total_amount_due|default:'0.00' }}" class="form-control col-2 mx-auto" readonly />
+    value="{{total_amount_due|default:'0.00' }}"class="form-control col-2 mx-auto" readonly />
             </div>
-            <button type="submit" name="get_quote" id="get-quote" class="btn btn-dark">Get Quote</button>
-            <button type="submit" id="submit-quote">Submit Quote</button>
-            {{ form.errors }}
+            <div class="form-group py-2 item">
+                <button type="submit" name="get_quote" id="get-quote" class="btn btn-dark">Get Quote</button>
+            </div>
+            <div class="form-group py-2 item">
+                <button type="submit" id="submit-quote" class="btn">Submit Quote</button>
+            </div>
+            <div class="errors item"> {{ form.errors }} </div>
         </form>
     </div>
     
     <script>
-       
+      document.querySelectorAll("input").forEach(function(input) {
+        input.addEventListener("input", function() {
+        document.querySelector(".errors").style.display = "none";
+    });
+    });
 
 
     </script>

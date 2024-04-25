@@ -19,7 +19,7 @@ function validationCheck(event) { //function validates that form has been filled
         isvalid = false;
     }
     if(password.length < 8 && password.trim() !== ""){
-        document.getElementById("errorMessage").textContent = "Password must be at least 8 characters";
+        document.getElementById("errorPassword").textContent = "Password must be at least 8 characters";
         isvalid = false;
     }
     

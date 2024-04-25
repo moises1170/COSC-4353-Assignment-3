@@ -10,7 +10,8 @@
     <title>Document</title>
 </head>
 <body>
-
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
     <nav class="navbar navbar-inverse ">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -23,19 +24,23 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li class=""><a href="#" class="mb-3">Quote</a></li>
-                <li class=""><a href="#" class="mb-3">History</a></li>
+                <li class=""><a href="{% url 'home' %}">Home</a></li>
+                <li class=""><a href="{% url 'fuelquote' %}" class="mb-3">Request A Quote</a></li>
+                <li class=""><a href="{% url 'quotehistory'%}" class="mb-3">Quote History</a></li>
               
             </ul>
             <ul class="nav navbar-nav navbar-right">
-
-              <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+              <button type="submit" class="btn btn-link" style="text-decoration: none; padding: 0; border: none; background: none;">
+                <span class="glyphicon glyphicon-log-out"></span>Log Out
+              </button>
             </ul>
           </div>
         </div>
       </nav>
-        
+      </form>
+      
+      {% block content %}
+      {% endblock %}
 
 </body>
 </html>
